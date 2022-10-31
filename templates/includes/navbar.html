@@ -29,17 +29,10 @@
 
       {% if request.user.is_staff %}
       <div class="text-end">
-        <a href="">
-          <button type="button" class="btn btn-outline-light me-2">
-            Logout
-          </button>
-        </a>
-      </div>
-      {% endif %}
-      <div class="text-end">
-        <button type="button" class="btn btn-outline-light me-2">Login</button>
+        <button type="button" class="btn btn-outline-light me-2">Logout</button>
         <button type="button" class="btn btn-warning">Sign-up</button>
       </div>
+      {% endif %} <br />
     </div>
   </div>
 </header>

@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls.static import static
 from listings.views import Listing_List, listing_delete, listing_retrieve, listing_create, listing_update, index
 
 urlpatterns = [
@@ -12,3 +14,6 @@ urlpatterns = [
     path('add-listing/', listing_create),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
