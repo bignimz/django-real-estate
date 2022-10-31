@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<h2>Name: {{listing.title}}</h2>
+<p>Description: {{listing.description}}</p>
+<p>Bedrooms: {{listing.num_bedrooms}}</p>
+<p>Bathrooms: {{listing.num_bathrooms}}</p>
+<p>Price: Ksh{{listing.price}}</p>
+<p>Floor Size: {{listing.square_footage}}</p>
+<p>Address: {{listing.address}}</p>
+{% if request.user.is_staff %}
+<div class="d-flex">
+  <a href="/listings/{{listing.id}}/edit/" class="btn btn-success listing-btn"
+    >Edit</a
+  >
+  <a
+    href="/listings/{{listing.id}}/delete/"
+    class="btn btn-danger ms-2 listing-btn"
+    >Delete</a
+  >
+</div>
+{% endif %}<br />
+{% endblock content %}
