@@ -1,26 +1,34 @@
-{% extends "base.html" %} {% load static %} {% block content %}
-<div class="my-5">
-  <img src="{{listing.image.url}}" alt="" class="img-fluid" />
-  <h2>Name: {{listing.title}}</h2>
-  <p>Description: {{listing.description}}</p>
-  <p>Bedrooms: {{listing.num_bedrooms}}</p>
-  <p>Bathrooms: {{listing.num_bathrooms}}</p>
-  <p>Price: Ksh{{listing.price}}</p>
-  <p>Floor Size: {{listing.square_footage}}</p>
-  <p>Address: {{listing.address}}</p>
-  <input type="checkbox" value="{{listing.is_featured}}" /> Is Featured?
-  <br />
+{% extends "base.html" %} {% load static %} {% block content %} <br />
+{% include 'includes/page-header.html' %}
+<div class="container">
+  <div class="my-5 listing">
+    <div class="listing-header">
+      <img src="{{listing.image.url}}" alt="" class="img-fluid" />
+    </div>
+    <div class="listing-body">
+      <h2 class="listing-title">{{listing.title}}</h2>
+      <p>Bedrooms: {{listing.num_bedrooms}}</p>
+      <p>Bathrooms: {{listing.num_bathrooms}}</p>
+      <p>Price: Ksh{{listing.price}}</p>
+      <p>Floor Size: {{listing.square_footage}}</p>
+      <p>Address: {{listing.address}}</p>
+      <p>Description: {{listing.description}}</p>
+      <input type="checkbox" value="{{listing.is_featured}}" /> Is Featured?
+      <br />
+    </div>
+  </div>
+  {% if request.user.is_staff %}
+
+  <div class="d-flex">
+    <a href="/listings/{{listing.id}}/edit/" class="btn btn-success listing-btn"
+      >Edit</a
+    >
+    <a
+      href="/listings/{{listing.id}}/delete/"
+      class="btn btn-danger ms-2 listing-btn"
+      >Delete</a
+    >
+  </div>
+  {% endif %}<br />
 </div>
-{% if request.user.is_staff %}
-<div class="d-flex">
-  <a href="/listings/{{listing.id}}/edit/" class="btn btn-success listing-btn"
-    >Edit</a
-  >
-  <a
-    href="/listings/{{listing.id}}/delete/"
-    class="btn btn-danger ms-2 listing-btn"
-    >Delete</a
-  >
-</div>
-{% endif %}<br />
 {% endblock content %}

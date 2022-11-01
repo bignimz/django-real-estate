@@ -46,7 +46,7 @@ def listing_update(request, pk):
         print(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('/')
+            return redirect('/listings')
 
     context = {'form': form}
     return render(request, 'update_listing.html', context)
